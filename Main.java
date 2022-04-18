@@ -1,3 +1,4 @@
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -45,7 +46,6 @@ public class Main {
         return values;
     }
 
-
     public static void saveObject(ISavable objectToSave) {
         for(int i=0; i<objectToSave.write().size(); i++) {
             System.out.println("Saving " + objectToSave.write().get(i) + " to storage device");
@@ -56,4 +56,5 @@ public class Main {
         ArrayList<String> values = readValues();
         objectToLoad.read(values);
     }
+
 }

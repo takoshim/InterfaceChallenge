@@ -1,14 +1,15 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Monster implements ISavable {
     private String name;
     private int hitPoints;
     private int strength;
-    private String attackStyle;
 
     Monster(String name, int hitPoints, int strength, String attackStyle) {
         this.name = name;
         this.hitPoints = hitPoints;
         this.strength = strength;
-        this.attackStyle = attackStyle;
     }
 
     String getName() {
@@ -23,25 +24,30 @@ public class Monster implements ISavable {
         return strength;
     }
 
-    String getAttackStyle() {
-        return attackStyle;
+    @Override
+    public String toString() {
+        return "Monster{" +
+                "name='" + name + '\'' +
+                ", hitPoints=" + hitPoints +
+                ", strength=" + strength +
+                '}';
     }
 
-    public void setName(String name) {
-        this.name = name;
+    @Override
+    public List<String> write() {
+        List<String> savedValues = new ArrayList<String>();
+        savedValues.add(0, this.getName());
+        savedValues.add(1, "" + this.getHitPoints());
+        savedValues.add(2, "" + this.getStrength());
+        return savedValues;
     }
 
-    public void setHitPoints(int hitPoints) {
-        this.hitPoints = hitPoints;
+    @Override
+    public void read(List<String> savedValues) {
+        if(savedValues != null || savedValues.size() > 0) {
+            this.name = savedValues.get(0);
+            this.hitPoints = Integer.parseInt(savedValues.get(1));
+            this.strength = Integer.parseInt(savedValues.get(2));
+        }
     }
-
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
-    public void setAttackStyle(String attackStyle) {
-        this.attackStyle = attackStyle;
-    }
-
-
 }
