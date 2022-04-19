@@ -4,17 +4,19 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Player tim = new Player("Tim", 10, 15);
+        ISavable tim = new Player("Tim", 10, 15);
         System.out.println(tim);
         saveObject(tim);
 
-        tim.setHitPoints(8);
+        ((Player)tim).setHitPoints(8);
+        ((Player)tim).setWeapon("Stormbringer");
         System.out.println(tim);
-        tim.setWeapon("Stormbringer");
         saveObject(tim);
 
-        loadObject(tim);
-        System.out.println(tim);
+        ISavable werewolf = new Monster("Werewolf", 20, 40);
+        String name = ((Monster)werewolf).getName();
+        System.out.println(werewolf);
+        saveObject(werewolf);
     }
 
     public static ArrayList<String> readValues() {

@@ -6,7 +6,7 @@ public class Monster implements ISavable {
     private int hitPoints;
     private int strength;
 
-    Monster(String name, int hitPoints, int strength, String attackStyle) {
+    Monster(String name, int hitPoints, int strength) {
         this.name = name;
         this.hitPoints = hitPoints;
         this.strength = strength;
